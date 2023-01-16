@@ -43,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: MaterialButton(
             onPressed: () {
-              // getData();
               postPWID();
-              // getQuestionFromAPI();
             },
             child: Container(
               width: 100,
@@ -68,11 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void getData() async {
-    var dio = Dio();
-    final response = await dio.get('https://google.com');
-    print(response.data);
-  }
+
 
   void postPWID() async {
     const url = 'http://192.168.220.134:8080/api/v1/account/login';
@@ -95,24 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
-    print(response.data);
-  }
-
-  Future<void> getQuestionFromAPI() async {
-    var dio = Dio();
-
-    Response response = await dio.get(
-      'http://opentdb.com/api.php',
-      queryParameters: {
-        'amount': 10,
-        'type': 'boolean',
-        'difficulty': 'medium',
-      },
-    );
-
-    var data = jsonDecode(
-      response.toString(),
-    );
-    print(data["results"]);
+    print(response.data.runtimeType);
   }
 }
